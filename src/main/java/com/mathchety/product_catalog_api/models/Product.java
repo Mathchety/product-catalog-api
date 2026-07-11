@@ -31,4 +31,8 @@ public class Product {
     @PositiveOrZero(message = "The quantity can't be negative")
     private int quantity;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 }

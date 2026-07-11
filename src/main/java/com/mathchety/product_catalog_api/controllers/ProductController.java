@@ -29,7 +29,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductDTO> create(@Valid @RequestBody ProductDTO dto) {
-        Product product = new Product(null, dto.getName(), dto.getPrice(), dto.getQuantity());
+        Product product = new Product(null, dto.getName(), dto.getPrice(), dto.getQuantity(), dto.getCategory());
         Product newProduct = service.create(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ProductDTO(newProduct));
     }
@@ -50,7 +50,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProductDTO> update(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {
-        Product product = new Product(id, dto.getName(), dto.getPrice(), dto.getQuantity());
+        Product product = new Product(id, dto.getName(), dto.getPrice(), dto.getQuantity(), dto.getCategory());
         Product updatedProduct = service.update(id, product);
         return ResponseEntity.ok(new ProductDTO(updatedProduct));
     }

@@ -1,5 +1,6 @@
 package com.mathchety.product_catalog_api.dto;
 
+import com.mathchety.product_catalog_api.models.Category;
 import com.mathchety.product_catalog_api.models.Product;
 
 import java.io.Serializable;
@@ -12,14 +13,16 @@ public class ProductDTO implements Serializable {
     private String name;
     private BigDecimal price;
     private Integer quantity;
+    private Category category;
 
     public ProductDTO(){}
 
-    public ProductDTO(Long id, String name, BigDecimal price, Integer quantity) {
+    public ProductDTO(Long id, String name, BigDecimal price, Integer quantity, Category category) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.category = category;
     }
 
     public ProductDTO(Product entity) {
@@ -27,6 +30,7 @@ public class ProductDTO implements Serializable {
         this.name = entity.getName();
         this.price = entity.getPrice();
         this.quantity = entity.getQuantity();
+        this.category = entity.getCategory();
     }
 
     public Long getId() {
@@ -59,5 +63,13 @@ public class ProductDTO implements Serializable {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
